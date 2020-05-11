@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright &copy; 2020 **_Geoff Goetz_** 
+Copyright &copy; 2020 **_Dusty McCord, Steph Podolak, Patrick Kille, Geoff Goetz_** 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
