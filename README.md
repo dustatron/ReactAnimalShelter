@@ -13,8 +13,7 @@ coming soon ...
 
 ## Components Hierarchy
 
-![Diagram](#) 
-coming soon ...
+![Diagram](./Shelter_WOW_.jpeg) 
 
 
 ## User Stories
