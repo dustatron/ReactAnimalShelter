@@ -1,4 +1,15 @@
 # Shelter WOW!
+
+<a href='https://github.com/PRKille/ReactAnimalShelter/stargazers'>
+  <img src='https://img.shields.io/github/stars/PRKille/ReactAnimalShelter.svg?color=yellow&style=plastic'>
+</a>
+<a href='https://github.com/PRKille/ReactAnimalShelter/network/members'>
+  <img src='https://img.shields.io/github/forks/PRKille/ReactAnimalShelter?color=blueviolet&style=plastic'>
+</a>
+<a href='https://github.com/PRKille/ReactAnimalShelter/issues'>
+  <img src='https://img.shields.io/github/issues/PRKille/ReactAnimalShelter?color=brightgreen&style=plastic'>
+</a>
+
 ## A animal shelter frontend application built with React and Love.
 
 #### By Dusty McCord, Steph Podolak, Patrick Kille, Geoff Snuggleupkins
