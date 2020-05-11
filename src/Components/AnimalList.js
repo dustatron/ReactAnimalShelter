@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import SingleAnimal from './SingleAnimal';
-import { Row, Col, Form, Button, Card, Spinner } from 'react-bootstrap';
+// import { Row, Col, Form, Button, Card, Spinner } from 'react-bootstrap';
+import { v4 } from 'uuid';
 
 function AnimalList(props) {
   const [ animalListState, setAnimalListState ] = useState([]);
@@ -10,22 +11,41 @@ function AnimalList(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, breed, age, gender } = e.target;
-    console.log('submit', name.value, breed.value, age.value, gender.value);
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    console.log("headers here.", myHeaders);
+    
+    let raw = JSON.stringify({"catId":35,"name":"bambie","breed":"cat","age":12,"gender":"girl"});
+    
+    let requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    
+  fetch("http://localhost:5000/api/cats", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+    
   };
 
   useEffect(() => {
     if (!loadState) {
-      fetch(`http://localhost:5000/api/Dogs/`)
+      fetch(`http://localhost:5000/api/Cats`)
         .then((response) => {
           return response.json();
         })
         .then((jsonifiedResponse) => {
           setAnimalListState(jsonifiedResponse);
+          setLoadState(true);
         })
         .catch((error) => {
           console.log('Animal Shelter Error => ', error);
         });
-      setLoadState(true);
     }
   });
 
@@ -35,7 +55,7 @@ function AnimalList(props) {
         <div>
           <h1> Animal List </h1>
           {animalListState.map((animal) => {
-            return <p>{animal.name}</p>;
+            return <p key={v4()}>{animal.name}</p>;
             // <SingleAnimal name={animal.name} breed={animal.breed} age={animal.age} gender={animal.gender} />;
           })}
         </div>
@@ -45,7 +65,11 @@ function AnimalList(props) {
          ////////////////////  ADD ANIMAL INPUT ///////////////////
         //////////////////////////////////////////////////////////
          */}
-        <Row>
+
+         <form onSubmit={handleSubmit}>
+           <button type='submit'> submit </button>
+          </form>
+        {/* <Row>
           <Col md={{ span: 6, offset: 2 }}>
             <Card>
               <Card.Header>
@@ -72,13 +96,13 @@ function AnimalList(props) {
               </Card.Body>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
       </React.Fragment>
-    );
+    )
   } else {
     return (
       <div>
-        <Spinner animation="border" />Loading...
+        Loading...
       </div>
     );
   }
