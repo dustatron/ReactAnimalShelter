@@ -15,11 +15,6 @@ function AnimalList(props) {
   const currentPath = location.pathname;
 
   useEffect(() => {
-    if (currentPath !== animalType) {
-      setAnimalType(currentPath);
-      history.push('/list/dogs');
-      console.log('animalType', animalType);
-    }
     if (!loadState) {
       fetch(`http://localhost:5000/api/${props.showAnimal}`)
         .then((response) => {

@@ -22,11 +22,13 @@ function AnimalEdit(props) {
       });
   }, []);
 
+  const idType = params.type === 'cats' ? 'catId' : 'dogId';
+
   const handleAnimalEdit = (e) => {
     e.preventDefault();
 
     let raw = JSON.stringify({
-      catId: params.animalId,
+      [idType]: params.animalId,
       name: e.target.name.value,
       breed: e.target.breed.value,
       age: e.target.age.value,
@@ -41,9 +43,9 @@ function AnimalEdit(props) {
       headers: myHeaders,
       body: raw
     };
-    fetch(`http://localhost:5000/api/cats/${params.animalId}`, requestOptions)
+    fetch(`http://localhost:5000/api/${params.type}/${params.animalId}`, requestOptions)
       .then((response) => response.text())
-      .then((result) => history.push(`/detail/${params.animalId}`))
+      .then((result) => history.push(`/detail/${params.animalId}/${params.type}`))
       .catch((error) => console.log('error', error));
   };
 
