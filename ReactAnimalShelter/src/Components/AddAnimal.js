@@ -11,7 +11,6 @@ function AddAnimal() {
 
     let myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
-    console.log('headers here.', myHeaders);
 
     let raw = JSON.stringify({
       name: name.value,
@@ -29,7 +28,7 @@ function AddAnimal() {
 
     fetch('http://localhost:5000/api/cats', requestOptions)
       .then((response) => response.text())
-      .then((result) => history.push('/list/'))
+      .then((result) => history.push('/list'))
       .catch((error) => console.log('error', error));
   };
 
@@ -49,7 +48,7 @@ function AddAnimal() {
                 <Form.Control type="text" name="breed" placeholder="Breed" />
               </Form.Group>
               <Form.Group>
-                <Form.Control type="text" name="age" placeholder="Age" />
+                <Form.Control type="number" name="age" placeholder="Age" />
               </Form.Group>
               <Form.Group>
                 <Form.Control type="text" name="gender" placeholder="Gender" />

@@ -31,7 +31,7 @@ function AnimalDetails(props) {
       <p> Breed: {animalState.breed}</p>
       <p> Age: {animalState.age}</p>
       <p> Gender: {animalState.gender}</p>
-      <Link to={`/edit/${params.animalId}`}>
+      <Link to={{ pathname: `/edit/${params.animalId}` }}>
         <button className="button">Edit</button>
       </Link>
     </Container>
