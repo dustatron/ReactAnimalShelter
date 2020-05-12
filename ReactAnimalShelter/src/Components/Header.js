@@ -14,30 +14,24 @@ function Header(props) {
             <Nav.Link as={Link} to="/add">
               Add an Animal
             </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to="/list/cats"
-              onClick={() => {
-                props.onAnimalClick('Cats');
-              }}
-            >
-              Cat list
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to="/list/dogs"
-              onClick={() => {
-                props.onAnimalClick('Dogs');
-              }}
-            >
-              Dog List
-            </Nav.Link>
 
             <NavDropdown title="Animal List" id="collasible-nav-dropdown">
-              <NavDropdown.Item as={Link} to="/list/cats">
+              <NavDropdown.Item
+                as={Link}
+                to="/list/cats"
+                onClick={() => {
+                  props.onAnimalClick('Cats');
+                }}
+              >
                 Cats
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/list/dogs">
+              <NavDropdown.Item
+                as={Link}
+                to="/list/dogs"
+                onClick={() => {
+                  props.onAnimalClick('Dogs');
+                }}
+              >
                 Dogs
               </NavDropdown.Item>
               <NavDropdown.Item href="#">Lizard People</NavDropdown.Item>
