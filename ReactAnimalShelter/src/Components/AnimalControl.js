@@ -7,7 +7,7 @@ import AddAnimal from './AddAnimal';
 import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
 import Header from './Header';
 
-function AnimalControl(props) {
+function AnimalControl() {
   const [ animal, setAnimal ] = useState('Dogs');
 
   return (
@@ -21,12 +21,10 @@ function AnimalControl(props) {
         }}
       />
       <Route path="/detail/:animalId/:type" component={AnimalDetails} />
-      <Route path="/edit/:animalId" component={AnimalEdit} />
+      <Route path="/edit/:animalId/:type" component={AnimalEdit} />
       <Route path="/add" component={AddAnimal} />
     </Router>
   );
 }
-
-AnimalControl.propTypes = {};
 
 export default AnimalControl;

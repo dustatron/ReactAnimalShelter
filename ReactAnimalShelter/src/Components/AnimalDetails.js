@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Button.css';
@@ -31,13 +30,11 @@ function AnimalDetails(props) {
       <p> Breed: {animalState.breed}</p>
       <p> Age: {animalState.age}</p>
       <p> Gender: {animalState.gender}</p>
-      <Link to={{ pathname: `/edit/${params.animalId}` }}>
+      <Link to={{ pathname: `/edit/${params.animalId}/${params.type}` }}>
         <button className="button">Edit</button>
       </Link>
     </Container>
   );
 }
-
-AnimalDetails.propTypes = {};
 
 export default AnimalDetails;

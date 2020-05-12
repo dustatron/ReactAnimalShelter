@@ -1,15 +1,25 @@
-import React, { useEffect, useState, useContext } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import SingleAnimal from './SingleAnimal';
+import PropTypes from 'prop-types';
 import { Row, Col, Form, Button, Card, Spinner } from 'react-bootstrap';
-import { v4 } from 'uuid';
+import { useLocation, useHistory } from 'react-router-dom';
 
 function AnimalList(props) {
   const [ animalListState, setAnimalListState ] = useState([]);
   const [ loadState, setLoadState ] = useState(false);
+  const [ animalType, setAnimalType ] = useState('/list/cats');
 
-  console.log('animalState', props.showAnimal);
+  const location = useLocation();
+
+  const history = useHistory();
+  const currentPath = location.pathname;
+
   useEffect(() => {
+    if (currentPath !== animalType) {
+      setAnimalType(currentPath);
+      history.push('/list/dogs');
+      console.log('animalType', animalType);
+    }
     if (!loadState) {
       fetch(`http://localhost:5000/api/${props.showAnimal}`)
         .then((response) => {
@@ -51,7 +61,7 @@ function AnimalList(props) {
             return (
               <SingleAnimal
                 name={animal.name}
-                type={animal.catId ? 'Cats' : 'Dogs'}
+                type={animal.catId ? 'cats' : 'dogs'}
                 breed={animal.breed}
                 age={animal.age}
                 gender={animal.gender}
@@ -70,6 +80,8 @@ function AnimalList(props) {
   }
 }
 
-AnimalList.propTypes = {};
+AnimalList.propTypes = {
+  showAnimal: PropTypes.string
+};
 
 export default AnimalList;

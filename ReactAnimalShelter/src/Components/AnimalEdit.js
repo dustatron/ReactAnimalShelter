@@ -10,7 +10,7 @@ function AnimalEdit(props) {
   const history = useHistory();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/Cats/${params.animalId}`)
+    fetch(`http://localhost:5000/api/${params.type}/${params.animalId}`)
       .then((response) => {
         return response.json();
       })
