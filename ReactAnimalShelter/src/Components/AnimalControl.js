@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 import AnimalDetails from './AnimalDetails';
 import AnimalEdit from './AnimalEdit';
 import AnimalList from './AnimalList';
+import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
+import Header from './Header';
 
 function AnimalControl(props) {
   return (
-    <React.Fragment>
-      <AnimalList />
-      <AnimalDetails />
-      <AnimalEdit />
-    </React.Fragment>
+    <Router>
+      <Header />
+      <Route path="/list" component={AnimalList} />
+      <Route path="/detail" component={AnimalDetails} />
+      <Route path="/edit" component={AnimalEdit} />
+    </Router>
   );
 }
 

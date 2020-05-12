@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import SingleAnimal from './SingleAnimal';
-// import { Row, Col, Form, Button, Card, Spinner } from 'react-bootstrap';
+import { Row, Col, Form, Button, Card, Spinner } from 'react-bootstrap';
 import { v4 } from 'uuid';
 
 function AnimalList(props) {
@@ -13,24 +13,27 @@ function AnimalList(props) {
     const { name, breed, age, gender } = e.target;
 
     let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    console.log("headers here.", myHeaders);
-    
-    let raw = JSON.stringify({"catId":35,"name":"bambie","breed":"cat","age":12,"gender":"girl"});
-    
+    myHeaders.append('Content-Type', 'application/json');
+    console.log('headers here.', myHeaders);
+
+    let raw = JSON.stringify({
+      name: name.value,
+      breed: breed.value,
+      age: age.value,
+      gender: gender.value
+    });
+
     let requestOptions = {
       method: 'POST',
       headers: myHeaders,
       body: raw,
       redirect: 'follow'
     };
-    
-    
-  fetch("http://localhost:5000/api/cats", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-    
+
+    fetch('http://localhost:5000/api/cats', requestOptions)
+      .then((response) => response.text())
+      .then((result) => setLoadState(false))
+      .catch((error) => console.log('error', error));
   };
 
   useEffect(() => {
@@ -49,14 +52,22 @@ function AnimalList(props) {
     }
   });
 
+  const listStyle = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: '100%'
+  };
+
   if (loadState) {
     return (
       <React.Fragment>
-        <div>
-          <h1> Animal List </h1>
+        <h1> Animal List </h1>
+        <div style={listStyle}>
           {animalListState.map((animal) => {
-            return <p key={v4()}>{animal.name}</p>;
-            // <SingleAnimal name={animal.name} breed={animal.breed} age={animal.age} gender={animal.gender} />;
+            // return <p key={v4()}>{animal.name}</p>;
+            return <SingleAnimal name={animal.name} breed={animal.breed} age={animal.age} gender={animal.gender} />;
           })}
         </div>
 
@@ -66,11 +77,11 @@ function AnimalList(props) {
         //////////////////////////////////////////////////////////
          */}
 
-         <form onSubmit={handleSubmit}>
-           <button type='submit'> submit </button>
-          </form>
-        {/* <Row>
-          <Col md={{ span: 6, offset: 2 }}>
+        {/* <form onSubmit={handleSubmit}>
+          <button type="submit"> submit </button>
+        </form> */}
+        <Row>
+          <Col md={{ span: 6, offset: 3 }}>
             <Card>
               <Card.Header>
                 <Card.Title className="text-center"> Add Animal </Card.Title>
@@ -96,15 +107,11 @@ function AnimalList(props) {
               </Card.Body>
             </Card>
           </Col>
-        </Row> */}
+        </Row>
       </React.Fragment>
-    )
-  } else {
-    return (
-      <div>
-        Loading...
-      </div>
     );
+  } else {
+    return <div>Loading...</div>;
   }
 }
 
