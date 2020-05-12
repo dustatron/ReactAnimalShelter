@@ -67,7 +67,15 @@ function AnimalList(props) {
         <div style={listStyle}>
           {animalListState.map((animal) => {
             // return <p key={v4()}>{animal.name}</p>;
-            return <SingleAnimal name={animal.name} breed={animal.breed} age={animal.age} gender={animal.gender} />;
+            return (
+              <SingleAnimal
+                name={animal.name}
+                breed={animal.breed}
+                age={animal.age}
+                gender={animal.gender}
+                id={animal.catId}
+              />
+            );
           })}
         </div>
 

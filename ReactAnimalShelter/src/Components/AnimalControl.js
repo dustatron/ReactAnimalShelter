@@ -11,7 +11,7 @@ function AnimalControl(props) {
     <Router>
       <Header />
       <Route path="/list" component={AnimalList} />
-      <Route path="/detail" component={AnimalDetails} />
+      <Route path="/detail/:animalId" component={AnimalDetails} />
       <Route path="/edit" component={AnimalEdit} />
     </Router>
   );

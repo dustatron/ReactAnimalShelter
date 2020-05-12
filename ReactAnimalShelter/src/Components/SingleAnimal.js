@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Col, Row, Button } from 'react-bootstrap';
 import './Button.css';
+import { Link } from 'react-router-dom';
 
 function SingleAnimal(props) {
   const animalStyle = {
@@ -35,7 +36,7 @@ function SingleAnimal(props) {
             Adopt
           </button>
           <button style={buttonStyle} className="button">
-            Edit
+            <Link to={`/detail/${props.id}`}>Details</Link>
           </button>
         </div>
       </Card.Footer>
@@ -47,7 +48,8 @@ SingleAnimal.propTypes = {
   name: PropTypes.string,
   breed: PropTypes.string,
   age: PropTypes.number,
-  gender: PropTypes.string
+  gender: PropTypes.string,
+  id: PropTypes.number
 };
 
 export default SingleAnimal;
