@@ -13,6 +13,7 @@ function SingleAnimal(props) {
   const buttonStyle = {
     margin: '5px'
   };
+
   return (
     <Card style={animalStyle}>
       <Card.Header className="text-center" as="h5">
@@ -26,18 +27,20 @@ function SingleAnimal(props) {
             <p>Gender: {props.gender} </p>
           </Col>
           <Col sm={6}>
-            <Card.Img src="https://source.unsplash.com/200x200/?cat" style={{ width: '90%' }} />
+            <Card.Img src={props.link} style={{ width: '90%' }} />
           </Col>
         </Row>
       </Card.Body>
       <Card.Footer className="text-muted">
         <div className="wrap">
-          <button style={buttonStyle} className="button">
+          <button style={buttonStyle} className="button" onClick={() => props.onAnimalAdoption(props.id)}>
             Adopt
           </button>
-          <button style={buttonStyle} className="button">
-            <Link to={`/detail/${props.id}`}>Details</Link>
-          </button>
+          <Link to={`/detail/${props.id}`}>
+            <button style={buttonStyle} className="button">
+              Details
+            </button>
+          </Link>
         </div>
       </Card.Footer>
     </Card>
@@ -49,7 +52,9 @@ SingleAnimal.propTypes = {
   breed: PropTypes.string,
   age: PropTypes.number,
   gender: PropTypes.string,
-  id: PropTypes.number
+  id: PropTypes.number,
+  link: PropTypes.string,
+  onAnimalAdoption: PropTypes.func
 };
 
 export default SingleAnimal;

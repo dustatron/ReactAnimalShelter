@@ -13,12 +13,10 @@ function Header() {
             <Nav.Link as={Link} to="/list">
               List of Animals
             </Nav.Link>
-            <Nav.Link as={Link} to="/detail">
-              Details
+            <Nav.Link as={Link} to="/add">
+              Add an Animal
             </Nav.Link>
-            <Nav.Link as={Link} to="/edit">
-              Edit
-            </Nav.Link>
+
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
