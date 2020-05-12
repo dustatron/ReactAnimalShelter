@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AnimalDetails from './AnimalDetails';
 import AnimalEdit from './AnimalEdit';
@@ -8,11 +8,19 @@ import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-
 import Header from './Header';
 
 function AnimalControl(props) {
+  const [ animal, setAnimal ] = useState('Dogs');
+
   return (
     <Router>
-      <Header />
-      <Route path="/list/:type" component={AnimalList} />
-      <Route path="/detail/:animalId" component={AnimalDetails} />
+      <Header onAnimalClick={setAnimal} />
+      <Route
+        exact
+        path="/list/:type"
+        component={() => {
+          return <AnimalList showAnimal={animal} />;
+        }}
+      />
+      <Route path="/detail/:animalId/:type" component={AnimalDetails} />
       <Route path="/edit/:animalId" component={AnimalEdit} />
       <Route path="/add" component={AddAnimal} />
     </Router>

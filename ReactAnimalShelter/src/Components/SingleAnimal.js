@@ -36,7 +36,7 @@ function SingleAnimal(props) {
           <button style={buttonStyle} className="button" onClick={() => props.onAnimalAdoption(props.id)}>
             Adopt
           </button>
-          <Link to={`/detail/${props.id}`}>
+          <Link to={`/detail/${props.id}/${props.type}`}>
             <button style={buttonStyle} className="button">
               Details
             </button>

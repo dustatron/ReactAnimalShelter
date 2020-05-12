@@ -1,8 +1,9 @@
 import React from 'react';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-function Header() {
+function Header(props) {
+  const history = useHistory();
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -10,19 +11,36 @@ function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/list">
-              List of Animals
-            </Nav.Link>
             <Nav.Link as={Link} to="/add">
               Add an Animal
             </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/list/cats"
+              onClick={() => {
+                props.onAnimalClick('Cats');
+              }}
+            >
+              Cat list
+            </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/list/dogs"
+              onClick={() => {
+                props.onAnimalClick('Dogs');
+              }}
+            >
+              Dog List
+            </Nav.Link>
 
-            <NavDropdown title="Animals" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Cats</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Dogs</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Lizard People</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Demons</NavDropdown.Item>
+            <NavDropdown title="Animal List" id="collasible-nav-dropdown">
+              <NavDropdown.Item as={Link} to="/list/cats">
+                Cats
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/list/dogs">
+                Dogs
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#">Lizard People</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>

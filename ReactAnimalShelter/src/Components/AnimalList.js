@@ -8,9 +8,10 @@ function AnimalList(props) {
   const [ animalListState, setAnimalListState ] = useState([]);
   const [ loadState, setLoadState ] = useState(false);
 
+  console.log('animalState', props.showAnimal);
   useEffect(() => {
     if (!loadState) {
-      fetch(`http://localhost:5000/api/Cats`)
+      fetch(`http://localhost:5000/api/${props.showAnimal}`)
         .then((response) => {
           return response.json();
         })
@@ -25,7 +26,7 @@ function AnimalList(props) {
   });
 
   const handleAnimalAdoption = (id) => {
-    fetch(`http://localhost:5000/api/Cats/${id}`, { method: 'DELETE' })
+    fetch(`http://localhost:5000/api/${props.showAnimal}/${id}`, { method: 'DELETE' })
       .then((response) => console.log('DELETE', response))
       .then((jsonifiedResponse) => {
         setLoadState(false);
@@ -50,13 +51,14 @@ function AnimalList(props) {
             return (
               <SingleAnimal
                 name={animal.name}
+                type={animal.catId ? 'Cats' : 'Dogs'}
                 breed={animal.breed}
                 age={animal.age}
                 gender={animal.gender}
-                id={animal.catId}
-                link={'https://source.unsplash.com/200x200/?cat'}
+                id={animal.catId ? animal.catId : animal.dogId}
+                link={`https://source.unsplash.com/200x200/?${animal.catId ? 'cat' : 'dog'}`}
                 onAnimalAdoption={handleAnimalAdoption}
-                key={animal.catId}
+                key={animal.catId ? animal.catId : animal.dogId}
               />
             );
           })}
