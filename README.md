@@ -12,15 +12,7 @@
 
 ## A animal shelter frontend application built with React and Love.
 
-#### By Dusty McCord, Steph Podolak, Patrick Kille, Geoff Snuggleupkins
-
-## VIEW DEPLOYED SITE: 
-coming soon...
-
-## Page Preview
-
-![Diagram](#)
-coming soon ...
+#### By Dusty McCord, Steph Podolak, Patrick Kille, Geoff Goetz
 
 ## Components Hierarchy
 
@@ -45,12 +37,29 @@ coming soon ...
 
 Clone the project by typing this command into your terminal.
 ```sh
-git clone https://github.com/dustatron/quality-survey-time.git
+git clone https://github.com/PRKille/ReactAnimalShelter.git
 ```
 
 Navigate to the new project folder by typing:
 ```sh
-cd quality-survey-time
+cd ReactAnimalShelter
+```
+To Start the database server:
+Navigate to the database folder with:
+```sh
+cd AnimalShelter.Solution
+cd AnimalShelter
+```
+Install all required packages and start the server by inputting:
+```sh
+dotnet restore
+dotnet run
+```
+Move to the project directory with:
+```sh
+cd ..
+cd ..
+cd ReactAnimalShelter
 ```
 
 Install all required packages with this command:
@@ -59,7 +68,6 @@ npm install
 ```
 
 In the project directory, you can run: 
-
  ```sh
  npm start
 ```
@@ -99,7 +107,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Support and Contact Details
-_Have a bug or an issue with this application? [Open a new issue](https://github.com/dustatron/quality-survey-time/issues) here on GitHub._
+_Have a bug or an issue with this application? [Open a new issue](https://github.com/PRKille/ReactAnimalShelter/issues) here on GitHub._
 
 ## Technologies Used
 * This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -108,4 +116,4 @@ _Have a bug or an issue with this application? [Open a new issue](https://github
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-Copyright (c) 2020 **_Dusty McCord, Steph Podolak_**
+Copyright (c) 2020 **_Dusty McCord, Steph Podolak, Geoff Goetz, Patrick Kille_**
